@@ -1,5 +1,5 @@
 {
-  "name": "aragorn52/payload",
+  "name": "aragorn52/payloadtoken",
   "description": "this library for payload from access token in lumen passport",
   "type": "library",
   "minimum-stability": "stable",
