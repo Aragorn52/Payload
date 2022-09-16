@@ -1,6 +1,7 @@
 {
-  "name": "compositecache/compositecache",
-  "description": "description",
+  "name": "aragorn52/payload",
+  "description": "this library for payload from access token in lumen passport",
+  "type": "library",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
