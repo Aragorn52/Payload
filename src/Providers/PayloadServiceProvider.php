@@ -1,9 +1,9 @@
 <?php
 
-namespace PayloadLumenPassport\Providers;
+namespace Payload\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use PayloadLumenPassport\Services\AccessTokenService;
+use Payload\Services\AccessTokenService;
 
 use function app;
 

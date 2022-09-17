@@ -3,7 +3,7 @@
 namespace Payload\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use PayloadLumenPassport\Services\AccessTokenService;
+use Payload\Services\AccessTokenService;
 
 class AccessTokenFacade extends Facade
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace PayloadLumenPassport\Services;
+namespace Payload\Services;
 
 use Closure;
 use DateTimeImmutable;
