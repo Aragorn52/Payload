@@ -24,7 +24,8 @@
       "Payload\\Facades\\": "src/Facades/",
       "Payload\\Http\\": "src/Http/",
       "Payload\\Providers\\": "src/Providers/",
-      "Payload\\Services\\": "src/Services/"
+      "Payload\\Services\\": "src/Services/",
+      "Payload\\Domain\\": "src/Domain/"
     }
   }
 }

@@ -7,7 +7,7 @@ use Laravel\Passport\Bridge\AccessToken as PassportAccessToken;
 use Lcobucci\JWT\Token;
 use Lcobucci\JWT\Token\Builder;
 use League\OAuth2\Server\Entities\Traits\AccessTokenTrait;
-use Webmozart\Assert\Assert;
+use Payload\Domain\Collections\ClaimCollection;
 
 class AccessToken extends PassportAccessToken
 {
@@ -40,9 +40,9 @@ class AccessToken extends PassportAccessToken
 
     private function addClaims(Builder $builder): Builder
     {
-        $customClaims = app()->make(AbstractClaim::class);
-        Assert::isInstanceOf($customClaims, AbstractClaim::class, 'This class not extends AbstractClaim');
-        foreach ($customClaims() as $key => $claim) {
+        /** @var ClaimCollection $customClaimsCollection */
+        $customClaimsCollection = app()->make(ClaimCollection::class);
+        foreach ($customClaimsCollection->asArray() as $key => $claim) {
             $builder->withClaim($key, $claim);
         }
         return $builder;
