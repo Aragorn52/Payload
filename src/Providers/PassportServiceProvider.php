@@ -35,6 +35,5 @@ class PassportServiceProvider extends \Laravel\Passport\PassportServiceProvider
     {
         parent::register();
         $this->app->bind(AccessTokenService::class, fn () => new AccessTokenService());
-        $this->app->bind(ClaimCollection::class, fn () => new ClaimCollection());
     }
 }
