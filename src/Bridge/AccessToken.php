@@ -49,7 +49,7 @@ class AccessToken extends PassportAccessToken
     {
         $service = app()->make(AbstractClaimService::class);
         Assert::isInstanceOf($service, AbstractClaimService::class, "Not instanceof " . AbstractClaimService::class);
-        $builder->withClaim('payload', $service()->asArray());
+        $builder->withClaim('payload', $service($this->getUserIdentifier())->asArray());
         return $builder;
     }
 }

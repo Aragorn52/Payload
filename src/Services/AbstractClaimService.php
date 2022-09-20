@@ -9,6 +9,8 @@ abstract class AbstractClaimService
 {
     protected ClaimCollection $claimCollection;
 
+    protected int | string $id;
+
     #[Pure]
     public function __construct()
     {
@@ -17,8 +19,9 @@ abstract class AbstractClaimService
 
     abstract public function addCustomClaims(): void;
 
-    public function __invoke(): ClaimCollection
+    public function __invoke(int | string $id): ClaimCollection
     {
+        $this->id = $id;
         $this->addCustomClaims();
         return $this->claimCollection;
     }
