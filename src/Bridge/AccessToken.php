@@ -3,6 +3,7 @@
 namespace Payload\Bridge;
 
 use DateTimeImmutable;
+use Illuminate\Support\Facades\Log;
 use Laravel\Passport\Bridge\AccessToken as PassportAccessToken;
 use Lcobucci\JWT\Token;
 use Lcobucci\JWT\Token\Builder;
@@ -23,7 +24,12 @@ class AccessToken extends PassportAccessToken
     {
         $this->initJwtConfiguration();
         $builder = $this->build();
-        $this->addClaims($builder);
+        try {
+            $this->addClaims($builder);
+        } catch (\Throwable $e) {
+            Log::error('Error!', [$e->getMessage()]);
+        }
+
         return $builder->getToken($this->jwtConfiguration->signer(), $this->jwtConfiguration->signingKey());
     }
 
@@ -43,9 +49,7 @@ class AccessToken extends PassportAccessToken
     {
         $service = app()->make(AbstractClaimService::class);
         Assert::isInstanceOf($service, AbstractClaimService::class, "Not instanceof " . AbstractClaimService::class);
-        foreach ($service()->asArray() as $key => $claim) {
-            $builder->withClaim($key, $claim);
-        }
+        $builder->withClaim('payload', $service()->asArray());
         return $builder;
     }
 }
