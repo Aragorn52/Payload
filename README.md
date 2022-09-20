@@ -28,10 +28,11 @@ Or if you prefer, edit `composer.json` manually:
 $app->register(\Payload\Providers\PassportServiceProvider::class);
 ```
 
-## Create YourCustomClaimService
+## Create YourCustomClaimService. Extends \Payload\Services\AbstractClaimService
 ### in method addCustomClaim add for claimCollection your claims
+### id user can be obtained by accessing the $this->id property YourCustomClaimService
 ```php
-class YourCustomClaimService extends AbstractClaimService
+class YourCustomClaimService extends \Payload\Services\AbstractClaimService
 {
     public function addCustomClaims(): void
     {
@@ -44,6 +45,6 @@ class YourCustomClaimService extends AbstractClaimService
 ```php
     public function boot()
     {
-        $this->app->bind(AbstractClaimService::class, fn () => new YourCustomClaimService());
+        $this->app->bind(\Payload\Services\AbstractClaimService::class, fn () => new YourCustomClaimService());
     }
 ```
